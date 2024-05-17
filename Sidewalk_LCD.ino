@@ -30,6 +30,9 @@ void setup() {
 
   // Initialize LCD
   lcd.begin(16, 2);
+
+  // Display initial message
+  lcdPrint("No Cross"); // Assuming starting state is no crossing
 }
 
 void loop() {
@@ -47,11 +50,7 @@ void loop() {
 
 void activatePedestrianCrossing() {
   // Display message on LCD
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("Pedestrian");
-  lcd.setCursor(0, 1);
-  lcd.print("Crossing...");
+  lcdPrint("Cross");
 
   // Activate pedestrian red light and green walk light
   digitalWrite(pedestrianRedLED, HIGH);
@@ -75,15 +74,18 @@ void activatePedestrianCrossing() {
 
 void resetPedestrianCrossing() {
   // Display message on LCD
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("Pedestrian");
-  lcd.setCursor(0, 1);
-  lcd.print("Waiting...");
+  lcdPrint("No Cross");
 
   // Turn off pedestrian lights
   digitalWrite(pedestrianRedLED, LOW);
   digitalWrite(pedestrianGreenLED, LOW);
   digitalWrite(pedestrianRedWalkLED, LOW);
   digitalWrite(pedestrianGreenWalkLED, LOW);
+}
+
+// Function to print a message on the LCD
+void lcdPrint(String message) {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(message);
 }
