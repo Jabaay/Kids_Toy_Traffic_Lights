@@ -1,0 +1,69 @@
+// Define pin numbers
+const int redLED = 2;
+const int yellowLED = 3;
+const int greenLED = 4;
+const int pedestrianRedLED = 5;
+const int pedestrianGreenLED = 6;
+const int redButton = 7;
+const int greenButton = 8;
+const int pedestrianButton = 9;
+
+void setup() {
+  // Initialize LED pins as output
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+  pinMode(pedestrianRedLED, OUTPUT);
+  pinMode(pedestrianGreenLED, OUTPUT);
+  
+  // Initialize button pins as input with pull-up resistors
+  pinMode(redButton, INPUT_PULLUP);
+  pinMode(greenButton, INPUT_PULLUP);
+  pinMode(pedestrianButton, INPUT_PULLUP);
+}
+
+void loop() {
+  // Check if red button is pressed
+  if (digitalRead(redButton) == LOW) {
+    // Activate vehicle traffic sequence
+    activateVehicleTraffic();
+  }
+  
+  // Check if green button is pressed
+  if (digitalRead(greenButton) == LOW) {
+    // Activate pedestrian crossing sequence
+    activatePedestrianCrossing();
+  }
+}
+
+void activateVehicleTraffic() {
+  // Vehicle traffic sequence
+  digitalWrite(greenLED, HIGH);
+  delay(5000); // Green light duration: 5 seconds
+  digitalWrite(greenLED, LOW);
+  
+  digitalWrite(yellowLED, HIGH);
+  delay(2000); // Yellow light duration: 2 seconds
+  digitalWrite(yellowLED, LOW);
+  
+  digitalWrite(redLED, HIGH);
+  delay(5000); // Red light duration: 5 seconds
+  digitalWrite(redLED, LOW);
+}
+
+void activatePedestrianCrossing() {
+  // Pedestrian crossing sequence
+  digitalWrite(redLED, HIGH); // Red light for vehicles
+  digitalWrite(pedestrianGreenLED, HIGH);
+  delay(5000); // Pedestrian green light duration: 5 seconds
+  digitalWrite(pedestrianGreenLED, LOW);
+  
+  digitalWrite(pedestrianRedLED, HIGH);
+  delay(2000); // Pedestrian red light duration: 2 seconds
+  digitalWrite(pedestrianRedLED, LOW);
+  
+  // Optional: Add sound for pedestrian crossing
+  // tone(buzzerPin, 1000, 1000); // Play a 1kHz tone for 1 second
+  // delay(1000);
+  // noTone(buzzerPin);
+}
