@@ -32,7 +32,7 @@ void setup() {
   lcd.begin(16, 2);
 
   // Display initial message
-  lcdPrint("No Cross"); // Assuming starting state is no crossing
+  lcdPrint("Do not Cross"); // Assuming starting state is no crossing
 }
 
 void loop() {
