@@ -55,14 +55,14 @@ void activatePedestrianCrossing() {
   // Activate pedestrian red light and green walk light
   digitalWrite(pedestrianRedLED, HIGH);
   digitalWrite(pedestrianGreenWalkLED, HIGH);
-  delay(5000); // Pedestrian crossing duration: 5 seconds
+  delay(10000); // Pedestrian crossing duration: 10 seconds
 
   // Flash pedestrian red walk LED
   for (int i = 0; i < 5; i++) {
     digitalWrite(pedestrianRedWalkLED, HIGH);
-    delay(500);
+    delay(1000);
     digitalWrite(pedestrianRedWalkLED, LOW);
-    delay(500);
+    delay(1000);
   }
 
   // Turn off pedestrian green walk light
