@@ -33,7 +33,7 @@ void loop() {
 void activateVehicleTraffic() {
   // Vehicle traffic sequence
   digitalWrite(greenLED, HIGH);
-  delay(5000); // Green light duration: 5 seconds
+  delay(10000); // Green light duration: 10 seconds
   digitalWrite(greenLED, LOW);
   
   digitalWrite(yellowLED, HIGH);
@@ -41,6 +41,6 @@ void activateVehicleTraffic() {
   digitalWrite(yellowLED, LOW);
   
   digitalWrite(redLED, HIGH);
-  delay(5000); // Red light duration: 5 seconds
+  delay(10000); // Red light duration: 10seconds
   digitalWrite(redLED, LOW);
 }
